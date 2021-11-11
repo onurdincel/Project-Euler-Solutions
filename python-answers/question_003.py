@@ -19,27 +19,17 @@ def calculate():
         elif answer > num or index > num:
             break
         else:
-            index = prime(index)
+            index = next_prime(index)
             if num % index != 0:
-                index = prime(index)
+                index = next_prime(index)+1
     return str(answer)
 
-def prime(n):
-    if n % 2 == 0:
-        n+=1
-        return n
-    elif n % 2 != 0:
-        n+=2
-        return n
-    else:
-        for i in range(2,n):
-            print(n)
-            if (n % i) == 0:
-                n =+ 2
-                return n
-            else:
-                n =+ 1
-                return n
+def next_prime(n):
+    for i in range(2,n):
+        if (n % i) == 0:
+            n+=1
+            return next_prime(n)
+    return n
 
 if __name__ == "__main__":
 	print(calculate())
